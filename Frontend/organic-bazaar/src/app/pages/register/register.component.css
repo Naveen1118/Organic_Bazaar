@@ -1,0 +1,164 @@
+.example-card {
+  max-width: 300px;
+
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url("/src/assets/img/background/bg2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+mat-card-actions {
+  text-align: center;
+  /* Center text (buttons) */
+}
+
+
+
+.amount-container {
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.btn {
+  flex-shrink: 0;
+}
+
+
+
+
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url("/assets/img/background/bg - 2.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: ghostwhite;
+}
+
+.full-width,
+.half-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.half-width {
+  width: 100%;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.center-title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  width: 100%;
+}
+
+.radio-label {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+@media (min-width: 600px) {
+  .half-width {
+    width: 48%;
+  }
+}
+
+@media (max-width: 600px) {
+  .center-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.card-container {
+  text-align: center;
+
+}
+
+.mat-card-header {
+  justify-content: center;
+  /* Center-align the header content */
+  text-align: center;
+}
+
+.mat-card-title,
+.mat-card-subtitle {
+  justify-content: center;
+  /* Center-align text inside the header */
+  text-align: center;
+  width: 100%;
+  /* Ensure it spans full width for proper centering */
+}
+
+
+.mat-mdc-card-header {
+  display: flex;
+  padding: 16px 64px 0;
+}
+
+.mat-mdc-card-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 52px;
+  padding: 25px;
+}
+
+.transparent-card {
+  background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+  backdrop-filter: blur(10px); /* Optional: for a blur effect */
+  border-radius: 8px; /* Optional: to smooth the edges */
+}

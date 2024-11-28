@@ -1,0 +1,32 @@
+<div class="container" data-bs-target="#navbar-top" data-bs-spy="scroll" tabindex="0">
+    <section class="login-section" id="login">
+      <mat-card class="transparent-card">
+        <mat-card-title>Login</mat-card-title>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-label style="font-weight: 600;">Email</mat-label>
+            <input matInput formControlName="userName" />
+            <mat-error *ngIf="form.controls['userName'].hasError('required')">
+              Email is required!
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-icon matSuffix>password</mat-icon>
+            <mat-label style="font-weight: 600;">Password</mat-label>
+            <input matInput type="password" formControlName="password" />
+            <mat-error *ngIf="form.controls['password'].hasError('required')">
+              Password is required!
+            </mat-error>
+          </mat-form-field>
+          <div class="text-center">
+            <button mat-raised-button color="primary" type="submit">
+              Login
+            </button>
+          </div>
+          <p>Don't have an account? <a routerLink="/register">Sign Up</a></p>
+        </form>
+      </mat-card>
+    </section>
+  </div>
+  

@@ -1,0 +1,12 @@
+.checkout-container {
+    padding: 20px;
+}
+
+.product-dtls {
+    margin-bottom: 20px;
+}
+
+.product-dtls img {
+    max-width: 200px;
+    height: auto;
+}

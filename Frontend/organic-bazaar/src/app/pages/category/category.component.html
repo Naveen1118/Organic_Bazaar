@@ -1,0 +1,59 @@
+<div class="container">
+    <br>
+    <div class="form" *ngIf="displayForm">
+        <h3 style="text-align: center;"><b>Add Category</b></h3>
+        <br>
+
+        <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" required>
+                        <mat-error *ngIf="categoryForm.controls['name'].hasError('required')">Name is
+                            required.</mat-error>
+                        <mat-error *ngIf="categoryForm.controls['name'].hasError('minlength')">Name must be at least 2
+                            characters long.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col">
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="categoryForm.invalid">Submit</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <br>
+    <div>
+        <button *ngIf="!displayForm" mat-raised-button color="primary" style="float: right;"
+            (click)="displayForm=!displayForm">Add Category</button>
+    </div>
+    <br>
+
+    <div class='table-responsive'>
+        <h3 style="text-align: center;"><b>View Categories</b></h3>
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> S.No </th>
+                <td mat-cell *matCellDef="let element;let i= index"> {{ (i+1)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th class="p-3" mat-header-cell *matHeaderCellDef> Category Name </th>
+                <td class="p-3" mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" class="search" colspan="15">
+                    <br>
+                    Record not found
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

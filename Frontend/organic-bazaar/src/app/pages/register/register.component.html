@@ -1,0 +1,87 @@
+<div class="container" *ngIf="!pricing">
+    <mat-card class="transparent-card">
+      <h2 class="center-title">Registration</h2>
+      <form  [formGroup]="individualForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" placeholder="Username" required>
+            <mat-error *ngIf="individualForm.get('username')?.hasError('required')">Username is required</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email" required>
+            <mat-error *ngIf="individualForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="individualForm.get('email')?.hasError('email')">Invalid email</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-row">
+          <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="dobPicker" placeholder="Choose a date" formControlName="dateOfBirth" required>
+            <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+            <mat-datepicker #dobPicker></mat-datepicker>
+            <mat-error *ngIf="individualForm.get('dateOfBirth')?.hasError('required')">Date of Birth is required</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput formControlName="mobileNo" placeholder="Mobile Number" required>
+            <mat-error *ngIf="individualForm.get('mobileNo')?.hasError('required')">Mobile Number is required</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-row">
+          <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Password" required>
+            <mat-error *ngIf="individualForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="individualForm.get('password')?.hasError('minlength')">Password must be at least 6 characters</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
+            <mat-error *ngIf="individualForm.get('confirmPassword')?.hasError('required')">Confirm Password is required</mat-error>
+            <mat-error *ngIf="individualForm.get('confirmPassword')?.hasError('passwordMismatch')">Passwords do not match</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-row">
+          <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Subscription</mat-label>
+            <mat-select formControlName="subscription" required>
+              <mat-option value="" disabled>Select Subscription</mat-option>
+              <mat-option *ngFor="let item of subscriptions" [value]="item.id">{{ item.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="individualForm.get('subscription')?.hasError('required')">Subscription is required</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-row" style="display: flex; justify-content: center;">
+          <button style="text-align: center;" mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+  
+  <!-- Display cards when form is hidden -->
+  <div class="card-container" *ngIf="pricing">
+    <mat-card *ngFor="let plan of selectedPlans" class="example-card " appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ plan.name }}</mat-card-title>
+        <mat-card-subtitle>{{ plan.description }}</mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <p>Price: {{ plan.price | currency }}</p>
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <!-- <input type="number" [(ngModel)]="plan.price" class="form-control custom-amount" placeholder="$ Enter amount" min="1"> -->
+        <div [id]="'paymentRef_' + plan.id"></div>
+      </mat-card-actions>
+    </mat-card>
+  </div>

@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+   
+}
+
+.center>.mat-simple-snackbar {
+    justify-content: center;
+  }
+  
+  .mat-mdc-snack-bar-label .mdc-snackbar__label {
+    text-align: center;
+    background-color: aliceblue;
+    color: black !important;
+    font-weight: 500;
+  }

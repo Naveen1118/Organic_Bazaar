@@ -1,0 +1,76 @@
+.container {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; */
+    /* background-image: url("/assets/img/background/bg-2.webp");
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+    height: 100%;
+}
+
+
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* min-height: 100vh; */
+    /* Full screen height */
+    background-image: url("/assets/img/background/bg - 1.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.transparent-card {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Slight transparency for readability */
+    backdrop-filter: blur(10px);
+    /* Optional: for a blur effect */
+
+    padding: 20px;
+    border-radius: 8px;
+}
+
+section {
+    padding: 10px;
+}
+
+.mat-mdc-card {
+    max-width: 400px;
+    padding: 30px;
+    width: 100%;
+}
+
+.mat-mdc-card-title {
+    margin-bottom: 20px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin-top: 5px;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.campaign-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.pointer-cursor {
+    cursor: pointer;
+}

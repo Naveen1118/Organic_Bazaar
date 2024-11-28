@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  eureka-server:
+    image: bazaar-service-registry
+    build:
+      context: ./bazaar-service-registry
+    ports:
+      - "8761:8761"
+    networks:
+      - bazaar-network
+
+  user-service:
+    image: bazaar-user-service
+    build:
+      context: ./bazaar-user-service
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/bazaar_user_r
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - bazaar-network
+    depends_on:
+      - eureka-server
+
+  product-service:
+    image: bazaar-product-service
+    build:
+      context: ./bazaar-product-service
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/bazaar_product
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - bazaar-network
+    depends_on:
+      - eureka-server
+
+  order-service:
+    image: bazaar-order-service
+    build:
+      context: ./bazaar-order-service
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/bazaar_order
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - bazaar-network
+    depends_on:
+      - eureka-server
+  
+  api-gateway:
+    image: bazaar-api-gateway
+    build:
+      context: ./bazaar-api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - bazaar-network
+    depends_on:
+      - eureka-server
+
+networks:
+  bazaar-network:

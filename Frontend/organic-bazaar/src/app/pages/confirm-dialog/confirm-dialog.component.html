@@ -1,0 +1,9 @@
+<mat-dialog-content style="height: 100px;text-align: center;font-size: 20px;">
+	<p>
+		{{message}}
+	</p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+	<button mat-raised-button color="warn" (click)="onConfirmClick()">{{confirmButtonText}}</button>
+	<button mat-raised-button color="primary" mat-dialog-close >{{cancelButtonText}}</button>
+</mat-dialog-actions>
